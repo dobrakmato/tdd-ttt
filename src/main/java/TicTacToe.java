@@ -49,7 +49,7 @@ public class TicTacToe {
 
     public boolean hasWon(int player) {
         // horizontal check
-        for (int r = 0; r < 2; r++) {
+        for (int r = 0; r < 3; r++) {
             if (board[3 * r] == player &&
                     board[3 * r + 1] == player &&
                     board[3 * r + 2] == player) {
@@ -58,7 +58,7 @@ public class TicTacToe {
         }
 
         // vertical check
-        for (int c = 0; c < 2; c++) {
+        for (int c = 0; c < 3; c++) {
             if (board[c] == player &&
                     board[c + 3] == player &&
                     board[c + 6] == player) {
@@ -67,12 +67,8 @@ public class TicTacToe {
         }
 
         // diagonal check
-        if ((board[0] == player && board[4] == player && board[8] == player) ||
-                (board[2] == player && board[4] == player && board[6] == player)) {
-            return true;
-        }
-
-        return false;
+        return (board[0] == player && board[4] == player && board[8] == player) ||
+                (board[2] == player && board[4] == player && board[6] == player);
     }
 
     public boolean isDraw() {
