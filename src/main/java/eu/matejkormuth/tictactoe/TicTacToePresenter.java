@@ -1,3 +1,5 @@
+package eu.matejkormuth.tictactoe;
+
 import java.util.Random;
 
 public class TicTacToePresenter {

@@ -1,3 +1,5 @@
+package eu.matejkormuth.tictactoe;
+
 public class TicTacToeFormatter {
 
     public String formatSeparator() {

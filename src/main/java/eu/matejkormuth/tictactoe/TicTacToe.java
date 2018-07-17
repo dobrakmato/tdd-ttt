@@ -1,3 +1,5 @@
+package eu.matejkormuth.tictactoe;
+
 public class TicTacToe {
 
     public static final int PLAYER_X = 1;

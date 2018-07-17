@@ -1,3 +1,7 @@
+package eu.matejkormuth.tictactoe;
+
+import eu.matejkormuth.tictactoe.TicTacToe;
+import eu.matejkormuth.tictactoe.TicTacToeFormatter;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
