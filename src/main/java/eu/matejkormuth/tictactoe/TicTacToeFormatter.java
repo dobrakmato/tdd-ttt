@@ -3,7 +3,7 @@ package eu.matejkormuth.tictactoe;
 public class TicTacToeFormatter {
 
     public String formatSeparator() {
-        return "\n";
+        return "";
     }
 
     public String formatDraw() {
