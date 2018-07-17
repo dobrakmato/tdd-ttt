@@ -4,64 +4,47 @@ public class TicTacToePresenter {
 
     public static final int PLAYING_SPEED = 2000;
 
+    private TicTacToeFormatter formatter;
     private TicTacToe game;
     private Random random;
     private int currentPlayer = TicTacToe.PLAYER_O;
 
     public TicTacToePresenter() {
+        this.formatter = new TicTacToeFormatter();
         this.game = new TicTacToe();
         this.random = new Random();
     }
 
-    public void printCurrentPlayer() {
-        System.out.println("Player " + (currentPlayer == TicTacToe.PLAYER_X ? "X" : "O") + " played :");
+    private void println(String str) {
+        System.out.println(str);
     }
 
-    public void printBoard() {
-        for (int i = 0; i < 3; i++) {
-            System.out.println(String.format(
-                    "%s|%s|%s",
-                    translateState(game.getState(3 * i)),
-                    translateState(game.getState(3 * i + 1)),
-                    translateState(game.getState(3 * i + 2))
-            ));
-            System.out.println("-+-+-");
+    private void printCurrentPlayer() {
+        println(formatter.formatCurrentPlayerMessage(currentPlayer));
+    }
+
+    private void printBoard() {
+        for (int row = 0; row < 3; row++) {
+            println(formatter.formatBoardRow(game, row));
+            println(formatter.formatBoardRowSeparator());
         }
     }
 
-    public void printWin(String who) {
-        printSeparator();
-        System.out.println("Player " + who + " won!");
+    private void printWin(String who) {
+        println(formatter.formatSeparator());
+        println(formatter.formatWin(who));
     }
 
-    public void printDraw() {
-        printSeparator();
-        System.out.println("Game ends with a draw!");
-    }
-
-    public void printSeparator() {
-        System.out.println();
-    }
-
-    public char translateState(int state) {
-        if (state == 0) {
-            return ' ';
-        }
-        if (state == TicTacToe.PLAYER_X) {
-            return 'X';
-        }
-        if (state == TicTacToe.PLAYER_O) {
-            return 'O';
-        }
-
-        throw new IllegalArgumentException("Invalid state provided!");
+    private void printDraw() {
+        println(formatter.formatSeparator());
+        println(formatter.formatDraw());
     }
 
     public void startGame() {
-        System.out.println("Staring game.");
+        println("Staring game.");
         printBoard();
-        System.out.println("The game will start with Player " + (currentPlayer == TicTacToe.PLAYER_X ? "X" : "O"));
-        printSeparator();
+        println(formatter.formatStartMessage(currentPlayer));
+        println(formatter.formatSeparator());
         sleep();
         nextMove();
     }
@@ -72,7 +55,7 @@ public class TicTacToePresenter {
         game.playMove(currentPlayer, move);
 
 
-        printSeparator();
+        println(formatter.formatSeparator());
         printCurrentPlayer();
         printBoard();
 
