@@ -56,7 +56,6 @@ public class TicTacToePresenter {
 
         game.playMove(currentPlayer, move);
 
-
         println(formatter.formatSeparator());
         printCurrentPlayer();
         printBoard();
